@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sarvadnya Sonkambale | AI & Data Science</title>
+  <meta name="description" content="Portfolio of Sarvadnya Suneet Sonkambale — SE AI–DS student focusing on AI, Data Science, Cybersecurity and full-stack projects." />
+
+  <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg" />
+
+  <!-- Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-elevated: #020617;
+      --bg-soft: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --accent-strong: rgba(56, 189, 248, 0.35);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #f97373;
+      --radius-lg: 18px;
+      --radius-full: 999px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: var(--sans);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(56,189,248,0.25) 0, transparent 45%),
+        radial-gradient(circle at 90% 0%, rgba(56,189,248,0.15) 0, transparent 40%),
+        radial-gradient(circle at 0% 100%, rgba(8,47,73,0.9) 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.95), rgba(2,6,23,0.4));
+      z-index: 50;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(51,65,85,0.7);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.75);
+    }
+
+    @media (max-width: 780px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        border-radius: 18px;
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      background: radial-gradient(circle at 30% 0, #f97316, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #020617;
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.65);
+      border: 1px solid rgba(15,23,42,0.9);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .logo-name {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 0.95rem;
+    }
+
+    .logo-role {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.8rem;
+      font-family: var(--mono);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+      text-transform: lowercase;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      border-bottom-color: var(--accent);
+    }
+
+    .nav-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      text-decoration: none;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+    }
+
+    .nav-pill span {
+      font-size: 0.65rem;
+    }
+
+    .nav-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(15,23,42,1);
+    }
+
+    /* Layout */
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.2fr);
+      gap: 28px;
+      margin-top: 28px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Sections & cards */
+    section {
+      margin-bottom: 32px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      font-family: var(--mono);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      font-family: var(--mono);
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(15,23,42,0.96), #020617);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+      box-shadow: 0 16px 44px rgba(15,23,42,0.9);
+    }
+
+    .card-soft {
+      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.18), rgba(15,23,42,0.96));
+      border-color: rgba(51,65,85,0.85);
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    /* Hero */
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      font-family: var(--mono);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: rgba(15,23,42,0.9);
+      color: var(--muted);
+    }
+
+    .badge-accent {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 2.5vw + 1rem, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 40rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-highlight {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(15,23,42,0.95);
+      border: 1px dashed rgba(75,85,99,0.9);
+      margin-bottom: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      font-size: 0.8rem;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: linear-gradient(135deg, var(--accent), #22c55e);
+      color: #020617;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 30px var(--accent-strong);
+      cursor: pointer;
+      font-family: var(--mono);
+    }
+
+    .btn-outline {
+      background: rgba(15,23,42,0.96);
+      border-color: rgba(55,65,81,0.9);
+      color: var(--muted);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn span {
+      font-size: 0.85rem;
+    }
+
+    /* Project cards */
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .project-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .project-meta {
+      font-size: 0.7rem;
+      font-family: var(--mono);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+      margin-bottom: 6px;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      font-family: var(--mono);
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(55,65,81,0.9);
+      color: var(--muted);
+    }
+
+    .pill-strong {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .project-links {
+      font-size: 0.78rem;
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .project-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-family: var(--mono);
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sidebar */
+    .sidebar-section {
+      margin-bottom: 18px;
+    }
+
+    .skill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill {
+      font-size: 0.72rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(55,65,81,0.9);
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    .timeline {
+      border-left: 1px solid rgba(55,65,81,1);
+      padding-left: 12px;
+      margin-top: 6px;
+    }
+
+    .timeline-item {
+      margin-bottom: 10px;
+    }
+
+    .timeline-title {
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .timeline-org {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .timeline-meta {
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    .learning-list {
+      list-style: none;
+      font-size: 0.8rem;
+    }
+
+    .learning-list li {
+      margin-bottom: 6px;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      font-family: var(--mono);
+    }
+
+    .learning-list span {
+      color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 32px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      padding-top: 14px;
+      border-top: 1px solid rgba(31,41,55,1);
+      font-family: var(--mono);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Utility */
+    .muted {
+      color: var(--muted);
+    }
+
+    .danger {
+      color: var(--danger);
+    }
+
+    .inline-code {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      background: rgba(15,23,42,0.95);
+      border-radius: 6px;
+      padding: 2px 6px;
+      border: 1px solid rgba(51,65,85,0.9);
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.7rem;
+      }
+      .card {
+        padding: 14px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="logo">
+        <div class="logo-avatar">SS</div>
+        <div class="logo-text">
+          <div class="logo-name">Sarvadnya S. Sonkambale</div>
+          <div class="logo-role">SE AI–DS • SPPU</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#projects">projects</a>
+        <a href="#skills">skills</a>
+        <a href="#learning">learning</a>
+        <a href="#contact">contact</a>
+        <!-- Resume button currently points to LinkedIn -->
+        <a class="nav-pill" href="https://www.linkedin.com/in/sarvadnya-sonkambale-650447381/" target="_blank" rel="noreferrer">
+          <span>●</span> resume / linkedin
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- LEFT SIDE: Hero + Projects + Journey -->
+      <div>
+        <!-- HERO -->
+        <section>
+          <div class="card card-soft">
+            <div class="hero-badge-row">
+              <span class="badge badge-accent">AI & Data Science · Student + Builder</span>
+              <span class="badge">Backend · Flutter · Firebase · Cybersecurity</span>
+            </div>
+
+            <h1 class="hero-title">
+              Building <span>systems</span>, not just assignments.
+            </h1>
+
+            <p class="hero-subtitle">
+              I'm an SE AI–DS student under Savitribai Phule Pune University,
+              focused on <strong>data structures, AI, operating systems</strong> and
+              practical projects — from <strong>career roadmap platforms</strong> to
+              <strong>cyber-oriented tools</strong>. I care about clean code, real users,
+              and learning in public.
+            </p>
+
+            <div class="hero-highlight">
+              // currently: revising <span class="muted">DS · OS · DE · AI</span> for SPPU,
+              building <span class="muted">Pathways (career roadmaps)</span> and
+              <span class="muted">Case Unsolved (AI detective app)</span>, and slowly
+              moving towards <span class="muted">OSCP-level fundamentals</span>.
+            </div>
+
+            <div class="hero-actions">
+              <a class="btn" href="mailto:sarvadnyasonkambale0@gmail.com">
+                <span>→ Hire / Contact</span>
+              </a>
+              <a class="btn btn-outline" href="https://github.com/Sarvadnya07" target="_blank" rel="noreferrer">
+                <span>GitHub profile</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+          <div class="section-label">// featured work</div>
+          <div class="section-title">Projects for recruiters & learning</div>
+          <div class="section-subtitle">
+            Real code, real problems. A mix of web, mobile and backend projects that
+            show how I think, not just what I’ve memorised.
+          </div>
+
+          <div class="card card-grid">
+            <!-- Project 1: Pathways -->
+            <article class="card">
+              <div class="project-header">
+                <h3 class="project-title">Pathways — Career Roadmap Platform</h3>
+                <span class="project-meta">2025 · Next.js + Supabase</span>
+              </div>
+              <p class="project-desc">
+                Multi-role career roadmap web app where students explore paths
+                like <em>Engineer, Doctor, Police, Lawyer, Teacher</em>, track stages,
+                and follow actionable tasks. Built with a modern stack focusing on
+                clean UX, database design and authentication.
+              </p>
+              <div class="pill-row">
+                <span class="pill pill-strong">Next.js (TS)</span>
+                <span class="pill">Tailwind CSS</span>
+                <span class="pill">Supabase · Postgres</span>
+                <span class="pill">Prisma</span>
+              </div>
+              <div class="project-links">
+                <!-- Temporarily link to profile; change to specific repo when ready -->
+                <a href="https://github.com/Sarvadnya07" target="_blank">source ↗</a>
+                <a href="https://github.com/Sarvadnya07" target="_blank">live demo (soon) ↗</a>
+              </div>
+            </article>
+
+            <!-- Project 2: EduRise Web -->
+            <article class="card">
+              <div class="project-header">
+                <h3 class="project-title">EduRise — Education Awareness Web</h3>
+                <span class="project-meta">2025 · HTML · Firebase</span>
+              </div>
+              <p class="project-desc">
+                Lightweight education awareness website for community engagement,
+                built using vanilla HTML/CSS/JS with Firebase Auth, Firestore and
+                Hosting. Includes role-based sections, pledges and simple analytics,
+                focused on fast deployment and low complexity.
+              </p>
+              <div class="pill-row">
+                <span class="pill pill-strong">HTML · CSS · JS</span>
+                <span class="pill">Firebase Auth</span>
+                <span class="pill">Firestore</span>
+                <span class="pill">Responsive UI</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Sarvadnya07" target="_blank">repo (mono) ↗</a>
+                <a href="https://edurise-ten.vercel.app/" target="_blank">live site ↗</a>
+              </div>
+            </article>
+
+            <!-- Project 3: Case Unsolved -->
+            <article class="card">
+              <div class="project-header">
+                <h3 class="project-title">Case Unsolved — AI Detective App</h3>
+                <span class="project-meta">2024 · Flutter + Firebase</span>
+              </div>
+              <p class="project-desc">
+                Mobile app where users solve mystery cases, track IQ-like scores,
+                and compete on a leaderboard. Uses Firebase Auth, Firestore, and
+                Hive for offline caching. Focus on app architecture and clean UI.
+              </p>
+              <div class="pill-row">
+                <span class="pill pill-strong">Flutter</span>
+                <span class="pill">Firebase Auth</span>
+                <span class="pill">Firestore</span>
+                <span class="pill">Hive (offline)</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Sarvadnya07/Case_Unsolved" target="_blank">source ↗</a>
+              </div>
+            </article>
+
+            <!-- Project 4: yt-dlp Backend -->
+            <article class="card">
+              <div class="project-header">
+                <h3 class="project-title">Media Downloader Backend (yt-dlp)</h3>
+                <span class="project-meta">2025 · FastAPI</span>
+              </div>
+              <p class="project-desc">
+                Python FastAPI backend around <code class="inline-code">yt-dlp</code> to download and manage
+                videos with metadata, SQLite tracking and basic authentication
+                (work-in-progress). Focused on clean APIs and error handling.
+              </p>
+              <div class="pill-row">
+                <span class="pill pill-strong">Python</span>
+                <span class="pill">FastAPI</span>
+                <span class="pill">SQLite</span>
+                <span class="pill">Background tasks</span>
+              </div>
+              <div class="project-links">
+                <!-- Pointing to profile until repo is public -->
+                <a href="https://github.com/Sarvadnya07" target="_blank">source (soon) ↗</a>
+              </div>
+            </article>
+
+            <!-- Project 5: Smart Power Monitor (Embedded) -->
+            <article class="card">
+              <div class="project-header">
+                <h3 class="project-title">Smart Power Monitoring System</h3>
+                <span class="project-meta">2025 · ESP8266 + IoT</span>
+              </div>
+              <p class="project-desc">
+                ESP8266-based power monitoring setup using voltage/current/temperature
+                sensors with Blynk integration. Supports relay/MOSFET control for
+                safe charging based on thresholds (overcurrent, overheating, time).
+              </p>
+              <div class="pill-row">
+                <span class="pill pill-strong">C/C++ (Arduino)</span>
+                <span class="pill">ESP8266</span>
+                <span class="pill">IoT · Blynk</span>
+              </div>
+              <div class="project-links">
+                <!-- Pointing to profile until repo is public -->
+                <a href="https://github.com/Sarvadnya07" target="_blank">source (soon) ↗</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- LEARNING JOURNEY -->
+        <section id="learning">
+          <div class="section-label">// learning in public</div>
+          <div class="section-title">Learning journey & roadmap</div>
+          <div class="card">
+            <p class="section-subtitle">
+              I treat my degree as a base layer and build my own roadmap on top:
+              strong fundamentals, then cybersecurity/DFIR and AI.
+            </p>
+            <ul class="learning-list">
+              <li><span>▹</span> <strong>Semester III (now)</strong> — Deep dive into
+                <span class="muted">Data Structures, AI, Operating Systems, Digital Electronics</span>;
+                building handwritten notes & predicted SPPU papers.</li>
+              <li><span>▹</span> <strong>2025–2026</strong> — Structured
+                <span class="muted">Cybersecurity + Digital Forensics</span> plan (Wireshark, Linux hardening,
+                DVWA, Autopsy, Volatility, documentation).</li>
+              <li><span>▹</span> Gradually targeting <span class="muted">OSCP-level</span> skills after core
+                CS fundamentals are strong.</li>
+              <li><span>▹</span> Parallel track: <span class="muted">AI/ML & data projects</span> —
+                applying algorithms, not just learning theory.</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT SIDE: About, Skills, Education, Contact -->
+      <aside>
+        <!-- ABOUT -->
+        <section class="sidebar-section">
+          <div class="card">
+            <div class="section-label">// about</div>
+            <div class="section-title">Who I am</div>
+            <p class="section-subtitle">
+              18-year-old SE AI–DS student based in Pune (India), combining
+              <strong>engineering fundamentals</strong> with <strong>hands-on projects</strong>.
+              Comfortable reading docs, debugging, and learning new stacks when the problem needs it.
+            </p>
+            <p class="section-subtitle">
+              I enjoy systems thinking: from low-level data structures and OS behaviour
+              up to full-stack apps and security implications.
+            </p>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="sidebar-section">
+          <div class="card">
+            <div class="section-label">// skills</div>
+            <div class="section-title">Tech stack</div>
+            <div class="skill-grid" style="margin-bottom: 10px;">
+              <span class="skill">C (SPPU focus)</span>
+              <span class="skill">C++ basics</span>
+              <span class="skill">Python</span>
+              <span class="skill">Data Structures</span>
+              <span class="skill">Algorithms</span>
+              <span class="skill">OOP</span>
+              <span class="skill">Operating Systems fundamentals</span>
+              <span class="skill">Git & GitHub</span>
+              <span class="skill">HTML · CSS · JS</span>
+              <span class="skill">React / Next.js (learning)</span>
+              <span class="skill">Tailwind CSS</span>
+              <span class="skill">Firebase (Auth, Firestore)</span>
+              <span class="skill">Flutter · Dart</span>
+              <span class="skill">SQLite / SQL basics</span>
+              <span class="skill">Linux (beginner / improving)</span>
+            </div>
+            <p class="section-subtitle">
+              I’m comfortable switching languages if needed; SPPU code is usually in
+              <span class="inline-code">C</span>, but I also work with
+              <span class="inline-code">Python</span> and <span class="inline-code">TypeScript</span>
+              for bigger projects.
+            </p>
+          </div>
+        </section>
+
+        <!-- EDUCATION & EXPERIENCE -->
+        <section class="sidebar-section">
+          <div class="card">
+            <div class="section-label">// timeline</div>
+            <div class="section-title">Education & projects</div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-title">SE AI–DS (2024 Pattern)</div>
+                <div class="timeline-org">Savitribai Phule Pune University</div>
+                <div class="timeline-meta">2024 – Present · Semester III</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-title">Community Engagement Project — EduRise</div>
+                <div class="timeline-org">Education Awareness Program</div>
+                <div class="timeline-meta">2025 · Web + field work</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-title">Pathways & Case Unsolved</div>
+                <div class="timeline-org">Self-initiated, long-term</div>
+                <div class="timeline-meta">2024 – 2025 · Product-style builds</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CERTIFICATIONS / GOALS -->
+        <section class="sidebar-section">
+          <div class="card">
+            <div class="section-label">// goals</div>
+            <div class="section-title">Certs & future</div>
+            <ul class="learning-list">
+              <li><span>▹</span> Target: <span class="muted">OSCP</span> (long-term track).</li>
+              <li><span>▹</span> Interested in <span class="muted">CEH, CHFI, CISSP (later)</span>
+                once fundamentals + experience are ready.</li>
+              <li><span>▹</span> Short-term: build a strong portfolio + internship-ready skills.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="sidebar-section">
+          <div class="card">
+            <div class="section-label">// contact</div>
+            <div class="section-title">Let’s talk</div>
+            <p class="section-subtitle">
+              Open to internships, project collaborations, and any opportunity
+              where I can learn fast and ship useful things.
+            </p>
+            <p class="section-subtitle">
+              📧 <a href="mailto:sarvadnyasonkambale0@gmail.com">sarvadnyasonkambale0@gmail.com</a><br />
+              🐙 <a href="https://github.com/Sarvadnya07" target="_blank">github.com/Sarvadnya07</a><br />
+              💼 <a href="https://www.linkedin.com/in/sarvadnya-sonkambale-650447381/" target="_blank">LinkedIn profile</a>
+            </p>
+            <p class="section-subtitle muted">
+              Bonus: ask me about <span class="inline-code">Detective Conan</span>,
+              Agatha Christie, or digital forensics and I’ll happily nerd out.
+            </p>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Sarvadnya S. Sonkambale · Hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
